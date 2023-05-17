@@ -26,12 +26,14 @@ FILE_OUT_TRAIN=$DIR_DATA/para/train/${PARA_MODEL}/4cr_qpbo_sentences.txt
 
 # Dev data
 FILE_ORI_DEV=$DIR_DATA/dev/carb/extractions.tsv
-FILE_IN_DEV=$DIR_DATA/para/dev/carb_sentences.txt
+# FILE_IN_DEV=$DIR_DATA/para/dev/carb_sentences.txt
+FILE_IN_DEV=$DIR_DATA/dev/carb_sentences.txt
 FILE_OUT_DEV=$DIR_DATA/para/dev/${PARA_MODEL}/carb_sentences.txt
 
 # Test data
 FILE_ORI_TEST=$DIR_DATA/test/carb/extractions.tsv
-FILE_IN_TEST=$DIR_DATA/para/test/carb_sentences.txt
+# FILE_IN_TEST=$DIR_DATA/para/test/carb_sentences.txt
+FILE_IN_TEST=$DIR_DATA/test/carb_sentences.txt
 FILE_OUT_TEST=$DIR_DATA/para/test/${PARA_MODEL}/carb_sentences.txt
 
 DIRS_OUT=($(dirname ${FILE_OUT_TRAIN}) $(dirname ${FILE_OUT_DEV}) $(dirname ${FILE_OUT_TEST}))
@@ -81,7 +83,7 @@ for((i=0; i<${#FILES_IN[@]}; i++)); do
             --statistics_path processed-data/qiji/${PARA_STAT}/repe_statistics \
             --level $LEVEL \
             --n_gpus 1 \
-            --n_cpus 40 \
+            --n_cpus 20 \
             --batch_size 32
         #     > ${DIR_CUR}/aesop_gen_para.log &
 

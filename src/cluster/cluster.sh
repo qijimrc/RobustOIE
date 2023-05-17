@@ -8,9 +8,9 @@ DIR_RUN=${2:-.}
 # if [ ! $DIR_RUN ]; then DIR_RUN=$(pwd); fi;
 
 # Target Dir to evaluate
-TARGET_DIR=$DIR_DATA/data/dev_test
+TARGET_DIR=$DIR_DATA/dev_test
 # Train source
-TRAIN_SORCE=$DIR_DATA/para/train/paranmt-h2/4cr_qpbo_sentences-level3.source
+TRAIN_SOURCE=$DIR_DATA/para/train/paranmt-h2/4cr_qpbo_sentences-level3.source
 # CaRB
 CaRB_DEV_SOURCES=$DIR_DATA/para/dev/paranmt-h2/carb_sentences-level3.source
 CaRB_TEST_SOURCES=$DIR_DATA/para/test/paranmt-h2/carb_sentences-level3.source
@@ -22,10 +22,12 @@ CaRB_TEST_EXT=$DIR_DATA/test/carb/extractions.tsv
 python $DIR_RUN/k_means.py \
     --carb_dev_src $CaRB_DEV_SOURCES \
     --carb_test_src $CaRB_TEST_SOURCES \
-    --train_source $TRAIN_SORCE \
+    --train_source $TRAIN_SOURCE \
     --carb_dev_ext $CaRB_DEV_EXT \
-    --carb_dev_ext $CaRB_TEST_EXT \
+    --carb_test_ext $CaRB_TEST_EXT \
     --target_dir $TARGET_DIR \
-    --tag_dict $DIR_RUN/tag_dict.json
+    --tag_dict $DIR_RUN/tag_dict.json \
+    --k 5 \
+    --seed 72
 
 

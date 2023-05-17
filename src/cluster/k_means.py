@@ -1,12 +1,12 @@
 import os
-from random import sample
 from sklearn.decomposition import PCA
 from typing import Counter
 from sklearn import cluster
 import json
 import numpy
 import matplotlib.pyplot as plt
-from random import sample
+# from random import sample
+import random
 import argparse
 from tqdm import tqdm
 
@@ -66,7 +66,7 @@ def bags_algorithm(k):
         files[i].close()
 
     with open(train_data) as f:
-        samples = sample(f.readlines(), 20000)
+        samples = random.sample(f.readlines(), 20000)
 
     distances = []
     for i in range(k):
@@ -177,8 +177,8 @@ def lcs_algorithm(source_files, train_source, k, traversal_algorithm, distance_f
         seq = []
         traversal_algorithm(root, seq)
         num_seqs.append(seq)
-    k_means = sample(num_seqs, 300)
-    for epoch in range(300):
+    k_means = random.sample(num_seqs, 300)
+    for epoch in range(100):
         print(f"epoch:{epoch}")
         k_sets = [[] for i in range(k)]
         for i in tqdm(range(len(num_seqs))):
@@ -222,7 +222,7 @@ def lcs_algorithm(source_files, train_source, k, traversal_algorithm, distance_f
 def evaluate(train_source, k_means, k, traversal_algorithm, distance_func):
     distances = []
     with open(train_source) as f:
-        samples = sample(f.readlines(), 20000)
+        samples = random.sample(f.readlines(), 20000)
     for i in range(k):
         temp = 0
         for line in samples:
@@ -276,10 +276,12 @@ if __name__ == "__main__":
     parser.add_argument("--target_dir", type=str)
     parser.add_argument("--tag_dict", type=str)
     parser.add_argument("--k", type=int, default=6)
+    parser.add_argument("--seed", type=int, default=0)
     args = parser.parse_args()
+    
+    random.seed(args.seed)
+    numpy.random.seed(args.seed)
 
-    
-    
     with open(args.tag_dict) as f:
         tag_dict = json.load(f)
 

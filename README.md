@@ -80,14 +80,15 @@ If you use this work or code, please kindly cite the following paper:
 ```bib
 @inproceedings{qi-etal-2022-syntactically,
     title = "Syntactically Robust Training on Partially-Observed Data for Open Information Extraction",
-    author = "Qi, Ji and
-      Chen, Yuxiang and
-      Hou, Lei and
-      Li, Juanzi and
+    author = "Qi, Ji  and
+      Chen, Yuxiang  and
+      Hou, Lei  and
+      Li, Juanzi  and
       Xu, Bin",
-    booktitle = "Proceedings of the 2022 Conference on Empirical Methods in Natural Language Processing (EMNLP)",
+    booktitle = "Findings of the Association for Computational Linguistics: EMNLP 2022",
     year = "2022",
-    publisher = "Association for Computational Linguistics"
+    publisher = "Association for Computational Linguistics",
+    url = "https://aclanthology.org/2022.findings-emnlp.465"
 }
 ```
 
